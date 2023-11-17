@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # run this script using nohup ./scripts/breseq_script_2.sh &
-# you can check what commands are running in the background using 
+# you can check what commands are running in the background using ps aux
 
 # Number of threads to use for breseq
 NUM_THREADS=8
 
-# Set the output directory name
-OUTPUT_DIR="breseq_output_new"
+# Set the output and samples directory names
+OUTPUT_DIR="breseq_output_populations_17_11"
+SEQUENCES_DIR="J5611" 
 
 # Create the output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
@@ -16,10 +17,10 @@ mkdir -p "$OUTPUT_DIR"
 get_ref_genome() {
     SAMPLE_ID=$1
     # Extract the sample's Name column using awk and determine the reference genome based on its content
-    SAMPLE_NAME=$(awk -v ID="$SAMPLE_ID" 'BEGIN{FS="\t"} $1==ID {print $2}' /home/s4528540/liv/sequences_new/samples.tsv)
-    if [[ $SAMPLE_NAME == *"_AB3_"* ]]; then
+    SAMPLE_NAME=$(awk -v ID="$SAMPLE_ID" 'BEGIN{FS="\t"} $1==ID {print $2}' "$SEQUENCES_DIR/samples.tsv")
+    if [[ $SAMPLE_NAME == *"AB3"* ]]; then
         echo "/home/s4528540/liv/AB3v2.2.gbk"
-    elif [[ $SAMPLE_NAME == *"_AB13_"* ]]; then
+    elif [[ $SAMPLE_NAME == *"AB13"* ]]; then
         echo "/home/s4528540/liv/AB13v2.2.gbk"
     else
         echo ""
@@ -27,7 +28,7 @@ get_ref_genome() {
 }
 
 # Iterate over the R1 files in the sequences folder
-for R1_FILE in /home/s4528540/liv/sequences_new/*_R1_001.fastq.gz; do
+for R1_FILE in "$SEQUENCES_DIR"/**/*_R1_001.fastq.gz; do
     # Extract the sample ID from the R1 filename
     SAMPLE_ID=$(basename "$R1_FILE" | cut -d "_" -f 1)
 
