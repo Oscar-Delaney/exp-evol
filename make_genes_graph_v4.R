@@ -3,7 +3,10 @@ library(tidyverse)
 # load the necessary csv's
 AB3 <- read.csv("AB3.csv")
 AB13 <- read.csv("AB13.csv")
-df <- rbind(AB3, AB13)
+AB3_extra <- read.csv("AB3_extra.csv")
+AB13_extra <- read.csv("AB13_extra.csv") %>%
+  select(-multiple_polymorphic_SNPs_in_same_codon)
+df <- rbind(AB3, AB13, AB3_extra, AB13_extra)
 names_df <- read.csv("names.csv")
 
 # Separate the 'Name' column
@@ -19,18 +22,18 @@ names_df <- names_df %>%
   ungroup() %>%
   select(-c(shift, replicate))
 
-# Define the vector of gene names
-gene_names <- c("rpoB", "rpsL")
+# Define the ancestral mutations
+mutations <- c("rpoB_T443G", "rpoB_T1555C", "rpoB_C1556T", "rpoB_A1568C",
+              "rpoB_C1712T", "rpsL_A128C", "rpsL_A262G", "rpsL_G275C")
 
 # Create sensible names for the genes and systematise mutation names
 df_filtered <- df %>%
-  filter(gene_name %in% gene_names) %>%
   mutate(
-    # gene_name = case_when(
-    #   gene_name == "ACIAD_RS04070" ~ "rpsL_",
-    #   gene_name == "ACIAD_RS01460" ~ "rpoB_",
-    #   TRUE ~ gene_name
-    # ),
+    gene_name = case_when(
+      gene_name == "ACIAD_RS04070" ~ "rpsL_",
+      gene_name == "ACIAD_RS01460" ~ "rpoB_",
+      TRUE ~ gene_name
+    ),
     # amino acid labelling
     # mutation = str_c(gene_name, aa_ref_seq, aa_position, aa_new_seq, sep = ""),
     # nucleotide labelling
@@ -39,6 +42,7 @@ df_filtered <- df %>%
     reads = new_read_count + ref_read_count,
     freq = new_read_count / reads
   ) %>%
+  filter(mutation %in% mutations) %>%
   left_join(names_df, by = "Sample_ID")
 
 
@@ -55,7 +59,7 @@ df_filtered$conf_high <- conf_int[2, ]
 
 final_df <- df_filtered %>%
   select(strain, condition, rep, mutation, freq, conf_low, conf_high) %>%
-  complete(strain, condition, rep = 1:6, mutation) %>%
+  # complete(strain, condition, rep = 1:6, mutation) %>%
   # replace_na(list(freq = 0)) %>%
   arrange(mutation, strain)
 
@@ -79,9 +83,6 @@ breseq_plot <- function(data, title, show_condition = TRUE) {
   # Define the custom color palette
   colors <- c(hsv(seq(0.15, 0, length.out = 5), 0.7, 1), 
                       hsv(seq(0.6, 0.75, length.out = 3), 0.7, 1))
-  # Define the corresponding mutation levels
-  mutations <- c("rpoB_T443G", "rpoB_T1555C", "rpoB_C1556T", "rpoB_A1568C",
-                "rpoB_C1712T", "rpsL_A128C", "rpsL_A262G", "rpsL_G275C")
 
   p <- ggplot(data, aes(x = mutation, y = freq, fill = mutation)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -107,19 +108,19 @@ breseq_plot <- function(data, title, show_condition = TRUE) {
   return(p)
 }
 
-pdf("rec+_all.pdf", width = 10, height = 16)
+pdf("figs/rec+_all.pdf", width = 10, height = 16)
 breseq_plot(rec_plus, "Strain: Rec+")
 dev.off()
 
-pdf("rec-_all.pdf", width = 10, height = 16)
+pdf("figs/rec-_all.pdf", width = 10, height = 16)
 breseq_plot(rec_minus, "Strain: Rec-")
 dev.off()
 
-pdf("rec+_mix.pdf", width = 10, height = 8)
+pdf("figs/rec+_mix.pdf", width = 10, height = 8)
 breseq_plot(rec_plus_mix, "Strain: Rec+, Condition: MIX", show_condition = F)
 dev.off()
 
-pdf("rec-_mix.pdf", width = 10, height = 8)
+pdf("figs/rec-_mix.pdf", width = 10, height = 8)
 breseq_plot(rec_minus_mix, "Strain: Rec-, Condition: MIX", show_condition = F)
 dev.off()
 
