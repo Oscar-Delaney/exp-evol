@@ -1,10 +1,13 @@
 #!/bin/bash
 
 # Set the path to the breseq output directory
-BRESEQ_DIR="/home/s4528540/liv/breseq_output_11_08"
+BRESEQ_DIR="breseq_output_populations_17_11"
 
 # Define the parent directory
-PARENT_DIR="/home/s4528540/liv/breseq_analysis_11_08"
+PARENT_DIR="breseq_analysis_21_11"
+
+# Define the sample names files
+SAMPLES="J5611/samples.tsv"
 
 # Set the paths to the main directories for AB3 and AB13
 AB3_DIR="${PARENT_DIR}/AB3"
@@ -22,10 +25,10 @@ mkdir -p "${AB13_DIR}/results"
 get_target_directory() {
     SAMPLE_ID=$1
     # Extract the sample's Name column using awk and determine the reference genome based on its content
-    SAMPLE_NAME=$(awk -v ID="$SAMPLE_ID" 'BEGIN{FS="\t"} $1==ID {print $2}' /home/s4528540/liv/sequences/samples.tsv)
-    if [[ $SAMPLE_NAME == *"_AB3_"* ]]; then
+    SAMPLE_NAME=$(awk -v ID="$SAMPLE_ID" 'BEGIN{FS="\t"} $1==ID {print $2}' $SAMPLES)
+    if [[ $SAMPLE_NAME == *"AB3"* ]]; then
         echo "$AB3_DIR"
-    elif [[ $SAMPLE_NAME == *"_AB13_"* ]]; then
+    elif [[ $SAMPLE_NAME == *"AB13"* ]]; then
         echo "$AB13_DIR"
     else
         echo "UNKNOWN"
@@ -44,12 +47,12 @@ done
 
 # # Run the mapping_success.sh script to generate a CSV file of read mapping success percentages
 MAP_SUCCESS="${PARENT_DIR}/percent_aligned.csv"
-/home/s4528540/liv/scripts/mapping_success.sh "$BRESEQ_DIR" "$MAP_SUCCESS"
+scripts/mapping_success.sh "$BRESEQ_DIR" "$MAP_SUCCESS"
 sed -i 's/\r//g' "$MAP_SUCCESS"
 # tr -d '\r' < "$MAP_SUCCESS" > "$MAP_SUCCESS"
 
 # Set the threshold for low read mapping success
-THRESHOLD=0.9
+THRESHOLD=0.5
 
 # Initialize the list of samples with low read mapping success
 LOW_SUCCESS_SAMPLES=""
@@ -89,8 +92,8 @@ done
 
 # Define reference genomes
 declare -A REF_GENOMES
-REF_GENOMES["$AB3_DIR"]="/home/s4528540/liv/AB3v2.2.gbk"
-REF_GENOMES["$AB13_DIR"]="/home/s4528540/liv/AB13v2.2.gbk"
+REF_GENOMES["$AB3_DIR"]="AB3v2.2.gbk"
+REF_GENOMES["$AB13_DIR"]="AB13v2.2.gbk"
 
 for DIR in "$AB3_DIR" "$AB13_DIR"; do
     # Excluding low-success samples for intersect file creation
