@@ -42,7 +42,7 @@ getGrowthParameters <- function(times, ODs, h = 5, tmax = Inf) {
 
 getBlankedODs <- function(allData) {
   allData %>%
-    group_by(PlateName, Rep, drugs) %>%
+    group_by(PlateName, Rep, STP, RIF) %>%
     mutate(median_blank_OD = median(OD[Strain == "BLANK"])) %>%
     mutate(blankedOD = pmax(0, OD - median_blank_OD)) %>%
     pull(blankedOD)
@@ -57,13 +57,12 @@ for (fileName in fileNames) { # populate allData
   allData <- rbind(allData, trafoData)
 }
 
-allData$drugs <- paste0("S", allData$STP, "-R", allData$RIF) # add column for drug environment
-allData$time_hrs <- allData$time / 60 # add column for time in hours
-allData$OD <- as.numeric(allData$OD) # make OD numeric
+# allData$time_hrs <- allData$time / 60 # add column for time in hours
+# allData$OD <- as.numeric(allData$OD) # make OD numeric
 allData$blankedOD <- getBlankedODs(allData) # add column with blanked ODs
 
 summarizedData <- allData %>%
-  group_by(Strain, drugs, Rep) %>%
+  group_by(Strain, Rep, STP, RIF) %>%
   summarize(
     growthParams = list(getGrowthParameters(time, blankedOD, h = 20, tmax = 300)),
     .groups = 'drop'
@@ -77,5 +76,28 @@ summarizedData <- allData %>%
   ) %>%
   select(-growthParams)
 
+# Import strain info from AB_resistant_mutants.csv
+strainInfo <- read.csv("AB_resistant_mutants.csv") %>%
+  filter(CDS %in% c("rpoB", "rpsL")) %>%
+  select(Mutant_Oscar_renamed, CDS, Ancestor, Mutation.Name)
+
+joined <- left_join(summarizedData, strainInfo, by = c("Strain" = "Mutant_Oscar_renamed")) %>%
+  # remove Strain rows with EMPTY or BLANK
+  filter(!Strain %in% c("EMPTY", "BLANK")) %>%
+  # if Ancestor is NA, set it equal to Strain
+  mutate(Ancestor = ifelse(is.na(Ancestor), Strain, Ancestor),
+    CDS = ifelse(is.na(CDS), "None", CDS)) %>%
+  # if Mutation.Name is NA, set it equal to "WT"
+  mutate(Mutation.Name = ifelse(is.na(Mutation.Name), "WT", Mutation.Name)) %>%
+  select(c("Ancestor", "CDS", "Mutation.Name", "Rep", "STP", "RIF", "maxOD", "maxGrowthRate"))
+
 # save as .RData:
-save(summarizedData, file = "summary.RData")
+save(joined, file = "summary.RData")
+
+# build a linear model to predict maxOD
+maxODmodel <- lm(maxOD ~ Ancestor + CDS * STP + CDS * RIF, data = joined)
+summary(maxODmodel)
+
+# build a linear model to predict maxGrowthRate
+maxGrowthRatemodel <- lm(maxGrowthRate ~ Ancestor + CDS * STP + CDS * RIF, data = joined)
+summary(maxGrowthRatemodel)

@@ -1,0 +1,62 @@
+﻿Project,Mutant,Mutant_Oscar_renamed,Ancestor,fastq sample,fileName,Drug,Minimum,Length,CDS,CDS.Position,AA position,NT,Codon,AA,Polymorphism.Type,Protein.Effect,Mutation Name,Comment
+HimaniNeve,HN_STP17,HN_STP17,AB13,,810 - STP17.csv,STP,297596,1,tufB,254,,A -> T,CAC -> CTC,H -> L,SNP (transversion),Substitution,tufB_A254T,
+HimaniNeve,HN_RIF7,HN_RIF7,AB13,,781- RIF 7.csv,RIF,302898,1,rpoB,443,,T -> G,GTA -> GGA,V -> G,SNP (transversion),Substitution,rpoB_T443G,in AB3 and AB13
+OJHons,OH_RIF4; previously RIF07 transformant ,OH_RIF4,AB3,,,RIF,302898,1,rpoB,443,,T -> G,GTA -> GGA,V -> G,SNP (transversion),Substitution,rpoB_T443G,in AB3 and AB13
+IanHons,IH_R24,IH_R24,AB3,,,RIF,304010,1,rpoB,1555,,T -> C,TCT -> CCT,S -> P,SNP (transition),Substitution,rpoB_T1555C,in AB3 and AB13
+OJHons,OH_AB13Rif1; previously rif06 from mutant screen,OH_AB13RIF1,AB13,,,RIF,304010,1,rpoB,1555,,T -> C,TCT -> CCT,S -> P,SNP (transition),Substitution,rpoB_T1555C,in AB3 and AB13
+HimaniNeve,HN_RIF2,HN_RIF2,AB13,,776- RIF 2.csv,RIF,304011,1,rpoB,1556,,C -> T,TCT -> TTT,S -> F,SNP (transition),Substitution,rpoB_C1556T,in AB3 and AB13
+OJHons,OH_Rif2 transformant,OH_RIF2,AB3,,,RIF,304011,1,rpoB,1556,,C -> T,TCT -> TTT,S -> F,SNP (transition),Substitution,rpoB_C1556T,in AB3 and AB13
+HimaniNeve,HN_RIF8,HN_RIF8,AB13,,782- RIF 8.csv,RIF,304023,1,rpoB,1568,,A -> C,GAT -> GCT,D -> A,SNP (transversion),Substitution,rpoB_A1568C,in AB3 and AB13
+HimaniNeve,HN_RIF18,HN_RIF18,AB13,,792-RIF 18.csv,RIF,304023,1,rpoB,1568,,A -> C,GAT -> GCT,D -> A,SNP (transversion),Substitution,rpoB_A1568C,in AB3 and AB13
+IanHons,IH_R27,IH_R27,AB3,,,RIF,304023,1,rpoB,1568,,A -> C,GAT -> GCT,D -> A,SNP (transversion),Substitution,rpoB_A1568C,in AB3 and AB13
+IanHons,IH_R21,IH_R21,AB3,,,RIF,304064,3,rpoB,1609,,GTT insertion,GTA -> GTTGTA,V -> V V,Insertion,Insertion,rpoB_1609GTT,
+HimaniNeve,HN_RIF1,HN_RIF1,AB13,,775- RIF 1.csv,RIF,304167,1,rpoB,1712,571,C -> T,CCT -> CTT,P -> L,SNP (transition),Substitution,rpoB_C1712T,in AB3 and AB13
+HimaniNeve,HN_RIF3,HN_RIF3,AB13,,777- RIF 3.csv,RIF,304167,1,rpoB,1712,571,C -> T,CCT -> CTT,P -> L,SNP (transition),Substitution,rpoB_C1712T,in AB3 and AB13
+IanHons,IH_R22,IH_R22,AB3,,,RIF,304167,1,rpoB,1712,571,C -> T,CCT -> CTT,P -> L,SNP (transition),Substitution,rpoB_C1712T,in AB3 and AB13
+Shimul,AB15,AB15,AB3,,,RIF,304167,1,rpoB,1712,571,C -> T,CCT -> CTT,P -> L,SNP (transition),Substitution,rpoB_C1712T,in AB3 and AB13
+HimaniNeve,HN_RIF5,HN_RIF5,AB13,,779-RIF 5.csv,RIF,304190,1,rpoB,1735,,A -> C,ATC -> CTC,I -> L,SNP (transversion),Substitution,rpoB_A1735C,
+HimaniNeve,HN_RIF13,HN_RIF13,AB13,,787-RIF 13.csv,RIF,304191,1,rpoB,1736,,T -> G,ATC -> AGC,I -> S,SNP (transversion),Substitution,rpoB_T1736G,
+HimaniNeve,HN_RIF19,HN_RIF19,AB13,,793-RIF 19.csv,RIF,304191,1,rpoB,1736,,T -> G,ATC -> AGC,I -> S,SNP (transversion),Substitution,rpoB_T1736G,
+HimaniNeve,HN_RIF4,HN_RIF4,AB13,,778-RIF 4.csv,RIF,304197,1,rpoB,1742,,C -> T,TCA -> TTA,S -> L,SNP (transition),Substitution,rpoB_C1742T,
+HimaniNeve,HN_RIF9,HN_RIF9,AB13,,783- RIF 9.csv,RIF,307699,1,rpoC,1121,,C -> T,TCG -> TTG,S -> L,SNP (transition),Substitution,rpoC_C1121T,
+HimaniNeve,HN_STP22,HN_STP22,AB13,,814 - STP22.csv,STP,721511,1,nuoG,2240,,C -> T,CCA -> CTA,P -> L,SNP (transition),Substitution,nuoG_C2240T,
+HimaniNeve,HN_STP13,HN_STP13,AB13,,806 - STP13.csv,STP,723197,1,nuoI,203,,T -> A,GTG -> GAG,V -> E,SNP (transversion),Substitution,nuoI_T203A,
+HimaniNeve,HN_STP12,HN_STP12,AB13,,805 - STP12.csv,STP,865042,1,rpsL,122,41,C -> T,ACA -> ATA,T -> I,SNP (transition),Substitution,rpsL_C122T,
+IanHons,IH_S11,IH_S11,AB3,,,STP,865048,1,rpsL,128,43,A -> G,AAA -> AGA,K -> R,SNP (transition),Substitution,rpsL_A128G,
+Shimul,AB14,AB14,AB3,,,STP,865048,1,rpsL,128,43,A -> C,AAA -> ACA,K -> T,SNP (transversion),Substitution,rpsL_A128C,
+OJHons,AB13 STP3; previously named S06 from my mutant screen,OH_AB13STP3,AB13,,,STP,865048,1,rpsL,128,43,A -> C,AAA -> ACA,K -> T,SNP (transversion),Substitution,rpsL_A128C,
+HimaniNeve,HN_STP8,HN_STP8,AB13,,801 - STP8.csv,STP,865051,1,rpsL,131,44,A -> C,AAA -> ACA,K -> T,SNP (transversion),Substitution,rpsL_A131C,
+HimaniNeve,HN_STP11,HN_STP11,AB13,,804 - STP11.csv,STP,865182,1,rpsL,262,88,A -> G,AAA -> GAA,K -> E,SNP (transition),Substitution,rpsL_A262G,
+IanHons,IH_S07,IH_S07,AB3,,,STP,865182,1,rpsL,262,88,A -> G,AAA -> GAA,K -> E,SNP (transition),Substitution,rpsL_A262G,
+IanHons,IH_S16,IH_S16,AB3,,,STP,865194,1,rpsL,274,92,G -> T,GGT -> TGT,G -> C,SNP (transversion),Substitution,rpsL_G274T,
+HimaniNeve,HN_STP24,HN_STP24,AB13,,816 - STP24.csv,STP,865195,1,rpsL,275,92,G -> C,GGT -> GCT,G -> A,SNP (transversion),Substitution,rpsL_G275C,
+OJHons,"AB3 STP1; previously named ""STP24 transformed""",OH_AB3STP1,AB3,,,STP,865195,1,rpsL,275,92,G -> C,GGT -> GCT,G -> A,SNP (transversion),Substitution,rpsL_G275C,
+HimaniNeve,HN_STP12,HN_STP12,AB13,,805 - STP12.csv,STP,1249474,1,csrA,188,,G -> A,TCY -> TTY,S -> F,SNP (transition),Substitution,csrA_G188A,
+HimaniNeve,HN_STP12,HN_STP12,AB13,,805 - STP12.csv,STP,1249478,1,csrA,184,,Y -> T,RNA -> ANA,,SNP,None,csrA_Y184T,
+HimaniNeve,HN_STP12,HN_STP12,AB13,,805 - STP12.csv,STP,1249480,0,csrA,183,,#NAME?,,,Insertion,Frame Shift,csrA_+GA,
+HimaniNeve,HN_RIF16,HN_RIF16,AB13,,790-RIF 16.csv,RIF,1362933,1,transcriptional regulator,629,,(A)7 -> (A)6,,,Deletion (tandem repeat),Frame Shift,transReg_A(7)629A(6),
+HimaniNeve,HN_RIF14,HN_RIF14,AB13,,788-RIF 14.csv,RIF,1362996,0,transcriptional regulator,567,,(C)5 -> (C)6,,,Insertion (tandem repeat),Frame Shift,transReg_C(5)567C(6),
+HimaniNeve,HN_RIF6,HN_RIF6,AB13,,780-RIF 6.csv,RIF,1363141,0,transcriptional regulator,422,,(T)5 -> (T)6,,,Insertion (tandem repeat),Frame Shift,transReg_T(5)422T(6),
+HimaniNeve,HN_RIF17,HN_RIF17,AB13,,791-RIF 17.csv,RIF,1363231,0,transcriptional regulator,332,,(T)6 -> (T)7,,,Insertion (tandem repeat),Frame Shift,transReg_T(6)332T(7),
+HimaniNeve,HN_RIF10,HN_RIF10,AB13,,784- RIF 10.csv,RIF,1363399,1,transcriptional regulator,163,,C -> A,GGT -> TGT,G -> C,SNP (transversion),Substitution,transReg_C163A,
+HimaniNeve,HN_STP1,HN_STP1,AB13,,794 - STP1.csv,STP,2326141,1,gidB,625,,G -> T,CAA -> AAA,Q -> K,SNP (transversion),Substitution,gidB_G625T,
+HimaniNeve,HN_STP1,HN_STP1,AB13,,794 - STP1.csv,STP,2326144,1,gidB,622,,G -> C,CAA -> GAA,Q -> E,SNP (transversion),Substitution,gidB_G622C,
+HimaniNeve,HN_STP1,HN_STP1,AB13,,794 - STP1.csv,STP,2326147,3,gidB,617,,GTA -> T,,,Deletion,Frame Shift,gidB_GTA617T,
+HimaniNeve,HN_STP1,HN_STP1,AB13,,794 - STP1.csv,STP,2326151,1,gidB,615,,A -> C,CTT -> CTG,,SNP (transversion),None,gidB_A615C,
+HimaniNeve,HN_STP1,HN_STP1,AB13,,794 - STP1.csv,STP,2326155,1,gidB,611,,A -> T,,,SNP (transversion),Truncation,gidB_A611T,
+HimaniNeve,HN_STP1,HN_STP1,AB13,,794 - STP1.csv,STP,2326158,1,gidB,608,,T -> A,CAT -> CTT,H -> L,SNP (transversion),Substitution,gidB_T608A,
+HimaniNeve,HN_STP7,HN_STP7,AB13,,800 - STP7.csv,STP,2326392,3,gidB,372,,#NAME?,"CAA,ACA -> CAA",QT -> Q,Deletion,Deletion,gidB_-372T,
+HimaniNeve,HN_STP4,HN_STP4,AB13,,797 - STP4.csv,STP,2326456,1,gidB,310,,T -> C,AAA -> GAA,K -> E,SNP (transition),Substitution,gidB_T310C,
+HimaniNeve,HN_STP16,HN_STP16,AB13,,809 - STP16.csv,STP,2326456,1,gidB,310,,T -> C,AAA -> GAA,K -> E,SNP (transition),Substitution,gidB_T310C,
+HimaniNeve,HN_STP3,HN_STP3,AB13,,796 - STP3.csv,STP,2326469,1,gidB,297,,#NAME?,,,Deletion,Frame Shift,gidB_-297G,
+HimaniNeve,HN_STP13,HN_STP13,AB13,,806 - STP13.csv,STP,2326469,1,gidB,297,,#NAME?,,,Deletion,Frame Shift,gidB_-297G,
+HimaniNeve,HN_STP23,HN_STP23,AB13,,815 - STP23.csv,STP,2326469,1,gidB,297,,#NAME?,,,Deletion,Frame Shift,gidB_-297G,
+HimaniNeve,HN_STP14,HN_STP14,AB13,,807 - STP14.csv,STP,2326474,2,gidB,291,,GC -> CA,"TTG,CTC -> TTT,GTC",LL -> FV,Substitution,Substitution,gidB_GC291CA,
+HimaniNeve,HN_STP14,HN_STP14,AB13,,807 - STP14.csv,STP,2326479,1,gidB,286,,AC -> TCG,,,Insertion,Frame Shift,gidB_A286G,
+HimaniNeve,HN_STP14,HN_STP14,AB13,,807 - STP14.csv,STP,2326482,2,gidB,283,,CA -> GC,TGT -> GCT,C -> A,Substitution,Substitution,gidB_CA283GC,
+HimaniNeve,HN_STP21,HN_STP21,AB13,,813 - STP21.csv,STP,2326524,4,gidB,239,,#NAME?,,,Deletion,Frame Shift,gidB_-ATAC,
+HimaniNeve,HN_STP9,HN_STP9,AB13,,802 - STP9.csv,STP,2326551,7,gidB,209,,#NAME?,,,Deletion,Frame Shift,gidB_-209C,
+HimaniNeve,HN_STP24,HN_STP24,AB13,,816 - STP24.csv,STP,2326597,0,gidB,170,,#NAME?,"CTA -> CTA,TTA",L -> LL,Insertion,Insertion,gidB_+ATA,
+HimaniNeve,HN_STP16,HN_STP16,AB13,,809 - STP16.csv,STP,2395051,1,cyoC,443,,A -> C,CAC -> CCC,H -> P,SNP (transversion),Substitution,cyoC_A443C,
+IanHons,IH_S16,IH_S16,AB3,,,STP,,1,gidB,204,,G -> A,,,SNP (transition),Substitution,gidB_G204A,
+IanHons,IH_S13,IH_S13,AB3,,,STP,,1,gidB,327,,G -> A,,,SNP (transition),Substitution,gidB_G327A,
