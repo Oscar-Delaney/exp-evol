@@ -1,5 +1,9 @@
 library(tidyverse)
 
+# save the current working directory
+parent_wd <- getwd()
+setwd(paste0(parent_wd, "/Breseq_output"))
+
 # load the necessary csv's
 AB3 <- read.csv("AB3.csv")
 AB13 <- read.csv("AB13.csv")
@@ -108,22 +112,25 @@ breseq_plot <- function(data, title, show_condition = TRUE) {
   return(p)
 }
 
-pdf("figs/rec+_all.pdf", width = 10, height = 16)
+setwd(paste0(parent_wd, "/Breseq_figures"))
+
+pdf("rec+_all.pdf", width = 10, height = 16)
 breseq_plot(rec_plus, "Strain: Rec+")
 dev.off()
 
-pdf("figs/rec-_all.pdf", width = 10, height = 16)
+pdf("rec-_all.pdf", width = 10, height = 16)
 breseq_plot(rec_minus, "Strain: Rec-")
 dev.off()
 
-pdf("figs/rec+_mix.pdf", width = 10, height = 8)
+pdf("rec+_mix.pdf", width = 10, height = 8)
 breseq_plot(rec_plus_mix, "Strain: Rec+, Condition: MIX", show_condition = F)
 dev.off()
 
-pdf("figs/rec-_mix.pdf", width = 10, height = 8)
+pdf("rec-_mix.pdf", width = 10, height = 8)
 breseq_plot(rec_minus_mix, "Strain: Rec-, Condition: MIX", show_condition = F)
 dev.off()
 
+setwd(parent_wd)
 
 # sum the frequency of mutations for each replicate in rec_plus_mix, ignoring NAs
 rec_plus_mix_sum <- rec_plus_mix %>%
