@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# run this script using nohup ./scripts/breseq_script_2.sh &
+# run this script using nohup [path to this script] &
 # you can check what commands are running in the background using ps aux
 
 # Number of threads to use for breseq
 NUM_THREADS=8
 
 # Set the output and samples directory names
-OUTPUT_DIR="breseq_output_populations_17_11"
-SEQUENCES_DIR="J5611" 
+OUTPUT_DIR="output"
+SEQUENCES_DIR="data"
 
 # Create the output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
@@ -19,9 +19,9 @@ get_ref_genome() {
     # Extract the sample's Name column using awk and determine the reference genome based on its content
     SAMPLE_NAME=$(awk -v ID="$SAMPLE_ID" 'BEGIN{FS="\t"} $1==ID {print $2}' "$SEQUENCES_DIR/samples.tsv")
     if [[ $SAMPLE_NAME == *"AB3"* ]]; then
-        echo "/home/s4528540/liv/AB3v2.2.gbk"
+        echo "genomes/AB3v2.2.gbk"
     elif [[ $SAMPLE_NAME == *"AB13"* ]]; then
-        echo "/home/s4528540/liv/AB13v2.2.gbk"
+        echo "genomes/AB13v2.2.gbk"
     else
         echo ""
     fi

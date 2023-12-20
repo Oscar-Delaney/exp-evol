@@ -2,7 +2,7 @@ library(tidyverse)
 
 # save the current working directory
 parent_wd <- getwd()
-setwd(paste0(parent_wd, "/Breseq_output"))
+setwd(paste0(parent_wd, "/analyses"))
 
 # load the necessary csv's
 AB3 <- read.csv("AB3.csv")

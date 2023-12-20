@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Set the path to the breseq output directory
-BRESEQ_DIR="breseq_output_populations_17_11"
+BRESEQ_DIR="output"
 
 # Define the parent directory
-PARENT_DIR="breseq_analysis_21_11"
+PARENT_DIR="analyses"
 
 # Define the sample names files
-SAMPLES="J5611/samples.tsv"
+SAMPLES="data/samples.tsv"
 
 # Set the paths to the main directories for AB3 and AB13
 AB3_DIR="${PARENT_DIR}/AB3"
@@ -47,7 +47,7 @@ done
 
 # # Run the mapping_success.sh script to generate a CSV file of read mapping success percentages
 MAP_SUCCESS="${PARENT_DIR}/percent_aligned.csv"
-scripts/mapping_success.sh "$BRESEQ_DIR" "$MAP_SUCCESS"
+code/mapping_success.sh "$BRESEQ_DIR" "$MAP_SUCCESS"
 sed -i 's/\r//g' "$MAP_SUCCESS"
 # tr -d '\r' < "$MAP_SUCCESS" > "$MAP_SUCCESS"
 
@@ -92,8 +92,8 @@ done
 
 # Define reference genomes
 declare -A REF_GENOMES
-REF_GENOMES["$AB3_DIR"]="AB3v2.2.gbk"
-REF_GENOMES["$AB13_DIR"]="AB13v2.2.gbk"
+REF_GENOMES["$AB3_DIR"]="genomes/AB3v2.2.gbk"
+REF_GENOMES["$AB13_DIR"]="genomes/AB13v2.2.gbk"
 
 for DIR in "$AB3_DIR" "$AB13_DIR"; do
     # Excluding low-success samples for intersect file creation
