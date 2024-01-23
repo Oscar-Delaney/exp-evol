@@ -6,15 +6,15 @@ library(tidyverse)
 # takes raw_/spec_ files and transforms them into tidy data
 transformODfile <- function(fileName, timePoints, timeInterval = 5) {
   # find starting position of data table within Excel file:
-  column2 <- read.xlsx(paste0("./OD_data/raw_", fileName), cols = 2, skipEmptyRows = FALSE, colNames = FALSE)[[1]]
+  column2 <- read.xlsx(paste0("./data/raw_", fileName), cols = 2, skipEmptyRows = FALSE, colNames = FALSE)[[1]]
   column2[is.na(column2)] <- "NA"
   startingRow <- match("Time", column2)
   # loading Excel file containing the raw read data as exported by the plate reader:
-  rawdf <- read.xlsx(paste0("./OD_data/raw_", fileName), 
+  rawdf <- read.xlsx(paste0("./data/raw_", fileName), 
                      rows = startingRow:(startingRow+timePoints+2), cols = 2:99, 
                      skipEmptyRows = FALSE)
   # loading Excel file containing specifications for all wells:
-  specsdf <- read.xlsx(paste0("./OD_data/specs_",fileName), cols = 1:97, skipEmptyRows = FALSE)
+  specsdf <- read.xlsx(paste0("./data/specs_",fileName), cols = 1:97, skipEmptyRows = FALSE)
   
   # generating new data frame:
   times <- seq(0, by = timeInterval, length.out = timePoints)
@@ -51,7 +51,7 @@ getBlankedODs <- function(allData) {
 ### Create tidy data frames using raw & spec files
 
 allData <- data.frame() # create the allData frame before populating
-fileNames <- gsub("^raw_", "", list.files(path = "./OD_data", pattern = "^raw_.*\\.xlsx$"))
+fileNames <- gsub("^raw_", "", list.files(path = "./data", pattern = "^raw_.*\\.xlsx$"))
 for (fileName in fileNames) { # populate allData
   trafoData <- transformODfile(fileName = fileName, timePoints = 24 * 60 / 5 + 1)
   allData <- rbind(allData, trafoData)
@@ -77,7 +77,7 @@ summarizedData <- allData %>%
   select(-growthParams)
 
 # Import strain info from AB_resistant_mutants.csv
-strainInfo <- read.csv("OD_data/AB_resistant_mutants.csv") %>%
+strainInfo <- read.csv("data/AB_resistant_mutants.csv") %>%
   filter(CDS %in% c("rpoB", "rpsL")) %>%
   select(Mutant_Oscar_renamed, CDS, Ancestor, Mutation.Name)
 
@@ -92,7 +92,7 @@ joined <- left_join(summarizedData, strainInfo, by = c("Strain" = "Mutant_Oscar_
   select(c("Ancestor", "CDS", "Mutation.Name", "Rep", "STP", "RIF", "maxOD", "maxGrowthRate"))
 
 # save as .RData:
-save(joined, file = "OD_data/nice_OD_data.RData")
+save(joined, file = "output/nice_OD_data.RData")
 
 # build a linear model to predict maxOD
 maxODmodel <- lm(maxOD ~ Ancestor + CDS * STP + CDS * RIF, data = joined)
