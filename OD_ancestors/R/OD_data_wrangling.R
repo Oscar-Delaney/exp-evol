@@ -1,5 +1,4 @@
 # load libraries
-library(openxlsx)
 # install grow96 if necessary via:
 # devtools::install_github("JanEngelstaedter/grow96")
 library(grow96)
