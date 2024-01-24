@@ -1,24 +1,6 @@
 # Functions to process and plot OD data from the evolution experiment
 # Code by Olivia Jessop, Michael Thompson & Jan Engelstaedter
 
-### FUNCTION DECLARATIONS ###
-
-#' Select the spec file and test folder for generating the OD Plot
-#' @return A vector of 2 strings, containing the path of the spec file and data folder selected respectively 
-file_select <- function() {
-  # Choose your spec file
-  specFile <- choose.files()
-  
-  # Choose data folder location
-  folderPath <- choose.dir()
-  
-  # Return both formatted correctly for use
-  # Note: This might need to be altered if user is not on windows
-  # Most likely still will work fine since don't expect '\' values but will be good to test
-  dataLocation <- c(gsub("\\\\", "/", specFile), gsub("\\\\", "/", folderPath))
-  return(dataLocation)
-}
-
 #' Subtract the blanking weights from the OD data. Don't want blanking? just set to 0
 #' @param odVec a vector containing all the original OD data
 #' @param treatment a string of the treatment
