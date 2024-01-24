@@ -1,0 +1,17 @@
+﻿Project,Strain,Ancestor,com,Drug,Minimum,Length,CDS,CDS_Position,AA_position,NT,Codon,AA,Polymorphism_Type,Protein_Effect,Mutation_name,Comment
+Shimul,AB14,AB3,com+,STP,865048,1,rpsL,128,43,A -> C,AAA -> ACA,K -> T,SNP (transversion),Substitution,rpsL_A128C,
+OJHons,OH_AB13STP3,AB13,com-,STP,865048,1,rpsL,128,43,A -> C,AAA -> ACA,K -> T,SNP (transversion),Substitution,rpsL_A128C,previously named S06 from my mutant screen
+IanHons,IH_S07,AB3,com+,STP,865182,1,rpsL,262,88,A -> G,AAA -> GAA,K -> E,SNP (transition),Substitution,rpsL_A262G,
+HimaniNeve,HN_STP11,AB13,com-,STP,865182,1,rpsL,262,88,A -> G,AAA -> GAA,K -> E,SNP (transition),Substitution,rpsL_A262G,
+OJHons,OH_AB3STP1,AB3,com+,STP,865195,1,rpsL,275,92,G -> C,GGT -> GCT,G -> A,SNP (transversion),Substitution,rpsL_G275C,"previously named ""STP24 transformed"""
+HimaniNeve,HN_STP24,AB13,com-,STP,865195,1,rpsL,275,92,G -> C,GGT -> GCT,G -> A,SNP (transversion),Substitution,rpsL_G275C,also has gidB_170ATA. Insertion!
+OJHons,OH_RIF4,AB3,com+,RIF,302898,1,rpoB,443,,T -> G,GTA -> GGA,V -> G,SNP (transversion),Substitution,rpoB_T443G,previously RIF07 transformant 
+HimaniNeve,HN_RIF7,AB13,com-,RIF,302898,1,rpoB,443,,T -> G,GTA -> GGA,V -> G,SNP (transversion),Substitution,rpoB_T443G,
+IanHons,IH_R24,AB3,com+,RIF,304010,1,rpoB,1555,,T -> C,TCT -> CCT,S -> P,SNP (transition),Substitution,rpoB_T1555C,
+OJHons,OH_AB13RIF1,AB13,com-,RIF,304010,1,rpoB,1555,,T -> C,TCT -> CCT,S -> P,SNP (transition),Substitution,rpoB_T1555C,previously rif06 from mutant screen
+OJHons,OH_RIF2,AB3,com+,RIF,304011,1,rpoB,1556,,C -> T,TCT -> TTT,S -> F,SNP (transition),Substitution,rpoB_C1556T,transformant
+HimaniNeve,HN_RIF2,AB13,com-,RIF,304011,1,rpoB,1556,,C -> T,TCT -> TTT,S -> F,SNP (transition),Substitution,rpoB_C1556T,
+IanHons,IH_R27,AB3,com+,RIF,304023,1,rpoB,1568,,A -> C,GAT -> GCT,D -> A,SNP (transversion),Substitution,rpoB_A1568C,
+HimaniNeve,HN_RIF18,AB13,com-,RIF,304023,1,rpoB,1568,,A -> C,GAT -> GCT,D -> A,SNP (transversion),Substitution,rpoB_A1568C,
+IanHons,IH_R22,AB3,com+,RIF,304167,1,rpoB,1712,571,C -> T,CCT -> CTT,P -> L,SNP (transition),Substitution,rpoB_C1712T,
+HimaniNeve,HN_RIF3,AB13,com-,RIF,304167,1,rpoB,1712,571,C -> T,CCT -> CTT,P -> L,SNP (transition),Substitution,rpoB_C1712T,
