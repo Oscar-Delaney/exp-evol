@@ -86,7 +86,7 @@ p_maxOD <- ggplot() +
   scale_shape_manual(values = c("com+" = 19, "com-" = 1), name = "Ancestor") +
   theme_bw()
 
-ggsave("./plots/maxODs.pdf", plot = p_maxOD, height = 5, width = 8)
+ggsave("./plots/maxODs.pdf", plot = p_maxOD, height = 6, width = 11)
 
 
 # plot maximum growth rates:
@@ -99,12 +99,12 @@ p_maxGrowth <- ggplot() +
              position = position_dodge(width = 0.66)) +
   facet_wrap(~Drug, ncol=4, dir="v") +
   scale_x_discrete(name = element_blank(), labels = element_blank()) +
-  scale_y_continuous(name = expression("Maximum growth rate ["*h^-1*"]")) +
+  scale_y_continuous(name = expression("Maximum growth rate ["*min^-1*"]")) +
   scale_color_manual(values = colors, labels = mutations, name = "Mutation") +
   scale_shape_manual(values = c("com+" = 19, "com-" = 1), name = "Ancestor") +
   theme_bw()
 
-ggsave("./plots/maxGrowthRates.pdf", plot = p_maxGrowth, height = 5, width = 8)
+ggsave("./plots/maxGrowthRates.pdf", plot = p_maxGrowth, height = 6, width = 11)
 
 # plotting the raw growth curves:
 p_growth <- ggplot(data = dat |> filter(WellType == "DATA") |>
