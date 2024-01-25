@@ -27,8 +27,24 @@ df <- df %>%
     Reads = new_read_count + ref_read_count,
     Frequency = new_read_count / Reads
   ) %>%
-  rename(Sample_ID = title) %>%
+  rename(Sample_ID = title,
+         Reference_seq_id = seq_id) %>%
   left_join(sample_key, by = "Sample_ID")
+
+#############################################################################
+### Produce simplified table                                              ###
+#############################################################################
+
+df_simplified <- df |>
+  select(Sample_ID, Reference_seq_id,
+         Sample_type, Time_point, Competence, Treatment, Shift, Replicate,
+         ref_read_count,  position_start, position_end, new_read_count, frequency,
+         type, snp_type,
+         gene_name, gene_position, gene_product, gene_strand, mutation_category,
+         codon_ref_seq, codon_position, codon_new_seq,
+         aa_ref_seq, aa_position, aa_new_seq)
+
+write_csv(df_simplified, "./breseq_output/breseq_output_simplified.csv")
 
 # retain only ancestral mutations:
 df_filtered <- df |>
@@ -51,7 +67,7 @@ df_filtered <- df_filtered |>
 #############################################################################
 
 df_filtered_mix <- df_filtered |>
-  filter(Treatment == "MIX") |>
+  filter(Treatment == "MIX", Sample_type == "Pop") |>
   complete(Competence, Replicate, Mutation) |>
   mutate(Competence = factor(Competence, levels = c("com+", "com-"))) |>
   mutate(Mutation = factor(Mutation, levels = mutations))
