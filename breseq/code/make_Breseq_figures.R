@@ -5,12 +5,18 @@ library(patchwork)
 ### Load and wrangle breseq output data                                   ###
 #############################################################################
 
-# load the necessary csv's produced by breseq:
-df <- rbind(read.csv("./breseq_output/AB3.csv"), 
-            read.csv("./breseq_output/AB13.csv"), 
-            read.csv("./breseq_output/AB3_extra.csv"), 
-            read.csv("./breseq_output/AB13_extra.csv") |>
-              select(-multiple_polymorphic_SNPs_in_same_codon))
+# List all files in the directory
+files <- list.files(path = "./breseq_output/", pattern = "^AB.*\\.csv$", full.names = TRUE)
+
+# Read, select specific columns, and combine all the matching files
+df <- do.call(rbind, lapply(files, function(file) read.csv(file) %>%
+  select(title, seq_id, ref_seq, new_seq, new_read_count, ref_read_count,
+         ref_read_count,  position_start, position_end, new_read_count,
+         frequency, type, snp_type, gene_name, gene_position, gene_product,
+         gene_strand, mutation_category, codon_ref_seq, codon_position,
+         codon_new_seq, aa_ref_seq, aa_position, aa_new_seq)
+         ))
+
 
 # load the sample key:
 sample_key <- read.csv("./data/sequencing_sample_key.csv")
