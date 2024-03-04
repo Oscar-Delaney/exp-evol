@@ -108,3 +108,13 @@ mix_sum <- df_filtered_mix %>%
             conf_high = sum(Frequency_conf_high, na.rm = TRUE)) %>%
   ungroup()
 mix_sum
+
+
+#############################################################################
+### Inspecting output from evolved clones                                 ###
+#############################################################################
+
+df_filtered_clones <- df_filtered |>
+  filter(Sample_type == "Clone") |>
+  select(Competence, Treatment, Replicate, Mutation) |>
+  arrange()
